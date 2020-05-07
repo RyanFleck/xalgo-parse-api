@@ -1,6 +1,7 @@
 # xalgo-parse-api
 
-Simple web API to send .rule and .table files to.
+Simple web API to send .rule and .table files to. Currently, for security
+reasons, the system filters out all non-ascii characters.
 
 ## Usage
 

@@ -23,6 +23,7 @@ require "multi_json"
 
 include XA::Rules::Parse::Content
 
+# Helper method - pretty-return JSON tree from parser output.
 def return_json(json_tree)
   if !json_tree || json_tree.empty?
     #raise RuntimeError.new("Unable to parse rule")
@@ -31,6 +32,7 @@ def return_json(json_tree)
   MultiJson.dump(json_tree, pretty: true)
 end
 
+# Helper method - remove all non-ascii characters.
 def clean(dirty_input)
   dirty_input.gsub(/[[:^ascii:]]/, "")
 end
@@ -61,21 +63,5 @@ namespace "/api/v5/parse" do
   post "/table" do
     tree = parse_table(clean(request.body.read))
     return_json(tree)
-  end
-end
-
-def interlibr_process
-  puts "Using rule folder #{File.join(ARGV[0], "*.rule")}"
-
-  Dir.glob(File.join(ARGV[0], "*.rule")) do |ifn|
-    tree = parse_rule(IO.read(ifn))
-    exit(-1) if !tree || tree.empty?
-    IO.write(ofn, MultiJson.dump(tree, pretty: true))
-  end
-
-  Dir.glob(File.join(ARGV[0], "*.table")) do |ifn|
-    tree = parse_table(IO.read(ifn))
-    exit(-1) if !tree || tree.empty?
-    IO.write(ofn, MultiJson.dump(tree, pretty: true))
   end
 end
