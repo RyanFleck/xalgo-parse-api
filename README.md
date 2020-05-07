@@ -9,7 +9,90 @@ _Rules_ can be posted as plaintext to `/api/v5/parse/rule`
 
 _Tables_ can be posted as plaintext to `/api/v5/parse/table`
 
-Various languages can send POST requests with a plaintext body; here are some popular samples:
+Various languages can send POST requests with a plaintext body; some popular
+samples are included below.
+
+For instance, sending:
+
+```
+META
+  VERSION "0.0.1"
+  MAINTAINER "Don Kelly <karfai@gmail.com>";
+
+REQUIRE refine:table0:0.0.1 AS table0;
+ARRANGE table0 AS table_shift_r3 USING shift(3);
+ARRANGE table0 AS table_shift_l9 USING shift(-9);
+ARRANGE table0 AS table_invert USING invert();
+```
+
+Will return the syntax tree:
+
+```json
+{
+  "meta": {
+    "version": "0.0.1",
+    "maintainer": "Don Kelly <karfai@gmail.com>"
+  },
+  "steps": [
+    {
+      "reference": {
+        "package": "refine",
+        "id": "table0",
+        "version": "0.0.1",
+        "name": "table0"
+      },
+      "indexes": [],
+      "name": "require"
+    },
+    {
+      "table": "table0",
+      "table_name": "table_shift_r3",
+      "arrangements": [
+        {
+          "type": "function",
+          "name": "shift",
+          "args": [
+            {
+              "type": "number",
+              "value": "3"
+            }
+          ]
+        }
+      ],
+      "name": "arrange"
+    },
+    {
+      "table": "table0",
+      "table_name": "table_shift_l9",
+      "arrangements": [
+        {
+          "type": "function",
+          "name": "shift",
+          "args": [
+            {
+              "type": "number",
+              "value": "-9"
+            }
+          ]
+        }
+      ],
+      "name": "arrange"
+    },
+    {
+      "table": "table0",
+      "table_name": "table_invert",
+      "arrangements": [
+        {
+          "type": "function",
+          "name": "invert",
+          "args": []
+        }
+      ],
+      "name": "arrange"
+    }
+  ]
+}
+```
 
 ### Python
 
