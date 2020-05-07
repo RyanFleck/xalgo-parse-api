@@ -2,18 +2,13 @@
 
 Simple web API to send .rule and .table files to.
 
-## Development
-
-```
-bundle install
-bundle exec ruby server.rb
-```
-
 ## Usage
 
 _Rules_ can be posted as plaintext to `/api/v5/parse/rule`
 
 _Tables_ can be posted as plaintext to `/api/v5/parse/table`
+
+Various languages can send POST requests with a plaintext body; here are some popular samples:
 
 ### Python
 
@@ -84,4 +79,11 @@ func main() {
 
   fmt.Println(string(body))
 }
+```
+
+## Development
+
+```
+bundle install
+bundle exec ruby server.rb
 ```
