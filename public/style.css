@@ -1,0 +1,68 @@
+html,
+button,
+textarea {
+    color: #3b3733;
+    background: #faebd7;
+    font-size: 18px;
+}
+
+html {
+    overflow-y: scroll;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+body {
+    margin: 1em auto;
+    max-width: 600px;
+    padding: 5px;
+}
+
+button,
+textarea {
+    border: 1px solid #3b3733;
+    border-radius: 4px;
+    padding: 0.5em 1em;
+    margin-right: 0.6em;
+}
+
+button {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    margin-top: 0.5em;
+    margin-right: 0.5em;
+}
+
+hr {
+    margin: 1em 0em;
+    border-top: 2px dashed #ad9c84;
+    border-bottom: transparent;
+    background: transparent;
+}
+
+a {
+    color: #9b8dad;
+    text-decoration: none;
+}
+
+#rule-or-table {
+    font-size: 0.9rem;
+    width: 90%;
+    padding: 1em;
+    margin: 0.1em;
+
+    height: 300px;
+    resize: none;
+    overflow-y: scroll;
+    color: greenyellow;
+    background: black;
+    border-radius: 0px;
+    outline: none;
+}
+
+#repl-window:focus {
+    outline: none;
+}
+
+pre {
+    color: black;
+    white-space: pre-wrap;
+}

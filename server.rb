@@ -40,7 +40,8 @@ end
 upmsg = "<p><b>Service is up.</b></p>  <p>Please use /api/v5/parse/rule or /api/v5/parse/table to parse a rule or table file.</p>"
 
 get "/" do
-  upmsg
+  File.read(File.join('public', 'index.html'))
+  send_file File.join(settings.public_folder, 'index.html')
 end
 
 post "/" do

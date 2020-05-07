@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>XA Parser</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <meta
+      content="width=device-width, user-scalable=yes, initial-scale=1, maximum-scale=1"
+      name="viewport"
+    />
+    <meta content="#faebd7" id="theme-color" name="theme-color" />
+  </head>
+
+  <body>
+    <h1>XA Parser</h1>
+
+    <!-- app -->
+    <div id="webapp">
+      <textarea
+        id="rule-or-table"
+        placeholder="enter .rule or .table file here"
+      ></textarea>
+      <br />
+      <button id="parse-rule">Parse Rule</button>
+      <button id="parse-table">Parse Table</button>
+      <button id="load-example">Load Example</button>
+
+      <h3>Result</h3>
+      <pre id="result">Enter a rule and press parse!</pre>
+    </div>
+
+    <br />
+    <br />
+    <!-- credits -->
+    <p>
+      <!--a href="https://ryanfleck.ca" rel="nofollow" target="_blank"> Ryan</a-->
+      Source code on GitHub at
+      <a
+        href="https://github.com/RyanFleck/xalgo-parse-api"
+        rel="nofollow"
+        target="_blank"
+      >
+        xalgo-parse-api
+      </a>
+    </p>
+    <script src="app.js" type="text/javascript"></script>
+  </body>
+</html>
