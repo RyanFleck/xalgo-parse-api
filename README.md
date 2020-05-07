@@ -1,7 +1,10 @@
 # xalgo-parse-api
 
-Simple web API to send .rule and .table files to. Currently, for security
-reasons, the system filters out all non-ascii characters.
+Simple web API to send **xalgo** language .rule and .table files to. Relies on the
+_lib-rules-parse-ruby_
+[gem](https://github.com/Xalgorithms/lib-rules-parse-ruby).
+Implements a simple frontend for casual users to tinker.
+Currently, for security reasons, the system filters out all non-ascii characters.
 
 ## Usage
 
