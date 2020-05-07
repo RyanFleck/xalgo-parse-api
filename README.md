@@ -19,10 +19,21 @@ META
   VERSION "0.0.1"
   MAINTAINER "Don Kelly <karfai@gmail.com>";
 
-REQUIRE refine:table0:0.0.1 AS table0;
-ARRANGE table0 AS table_shift_r3 USING shift(3);
-ARRANGE table0 AS table_shift_l9 USING shift(-9);
-ARRANGE table0 AS table_invert USING invert();
+EFFECTIVE
+  IN "CA-ON"
+  FROM "2018-04-01T00:00"
+  TO "9999-12-30T23:59"
+  TIMEZONE "America/Toronto"
+  FOR "key0";
+
+WHEN items:a == 1;
+
+REQUIRE assemble:origin:0.0.1 AS table_origin;
+REQUIRE assemble:join:0.0.1 AS table_join;
+
+ASSEMBLE table0
+  COLUMNS (a, c) FROM table_origin
+  COLUMN p FROM table_join;
 ```
 
 Will return the syntax tree:
@@ -33,62 +44,76 @@ Will return the syntax tree:
     "version": "0.0.1",
     "maintainer": "Don Kelly <karfai@gmail.com>"
   },
+  "effective": [
+    {
+      "jurisdictions": ["CA-ON"],
+      "starts": "2018-04-01T00:00",
+      "ends": "9999-12-30T23:59",
+      "timezone": "America/Toronto",
+      "keys": ["key0"]
+    }
+  ],
+  "whens": {
+    "items": [
+      {
+        "expr": {
+          "left": {
+            "scope": "items",
+            "key": "a",
+            "type": "reference"
+          },
+          "right": {
+            "type": "number",
+            "value": "1"
+          },
+          "op": "eq"
+        }
+      }
+    ]
+  },
   "steps": [
     {
       "reference": {
-        "package": "refine",
-        "id": "table0",
+        "package": "assemble",
+        "id": "origin",
         "version": "0.0.1",
-        "name": "table0"
+        "name": "table_origin"
       },
       "indexes": [],
       "name": "require"
     },
     {
-      "table": "table0",
-      "table_name": "table_shift_r3",
-      "arrangements": [
+      "reference": {
+        "package": "assemble",
+        "id": "join",
+        "version": "0.0.1",
+        "name": "table_join"
+      },
+      "indexes": [],
+      "name": "require"
+    },
+    {
+      "table_name": "table0",
+      "columns": [
         {
-          "type": "function",
-          "name": "shift",
-          "args": [
+          "table": "table_origin",
+          "sources": [
             {
-              "type": "number",
-              "value": "3"
+              "columns": ["a", "c"]
+            }
+          ]
+        },
+        {
+          "table": "table_join",
+          "sources": [
+            {
+              "name": "p",
+              "source": "p"
             }
           ]
         }
       ],
-      "name": "arrange"
-    },
-    {
-      "table": "table0",
-      "table_name": "table_shift_l9",
-      "arrangements": [
-        {
-          "type": "function",
-          "name": "shift",
-          "args": [
-            {
-              "type": "number",
-              "value": "-9"
-            }
-          ]
-        }
-      ],
-      "name": "arrange"
-    },
-    {
-      "table": "table0",
-      "table_name": "table_invert",
-      "arrangements": [
-        {
-          "type": "function",
-          "name": "invert",
-          "args": []
-        }
-      ],
-      "name": "arrange"
+      "name": "assemble"
     }
   ]
 }
