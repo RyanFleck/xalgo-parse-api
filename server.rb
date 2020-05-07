@@ -35,7 +35,7 @@ def clean(dirty_input)
   dirty_input.gsub(/[[:^ascii:]]/, "")
 end
 
-upmsg = "Service is up. Please use /rule or /table to parse a rule or table file."
+upmsg = "<p><b>Service is up.</b></p>  <p>Please use /api/v5/parse/rule or /api/v5/parse/table to parse a rule or table file.</p>"
 
 get "/" do
   upmsg
