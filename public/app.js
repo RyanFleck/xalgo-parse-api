@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
       redirect: "follow",
     };
 
-    fetch("http://localhost:4567/api/v5/parse/rule", requestOptions)
+    fetch("/api/v5/parse/rule", requestOptions)
       .then((response) => response.text())
       .then((result) => display(result))
       .catch((error) => display_error(error));
@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
       redirect: "follow",
     };
 
-    fetch("http://localhost:4567/api/v5/parse/table", requestOptions)
+    fetch("/api/v5/parse/table", requestOptions)
       .then((response) => response.text())
       .then((result) => display(result))
       .catch((error) => display_error(error));
