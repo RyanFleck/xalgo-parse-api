@@ -16,9 +16,11 @@
 # License along with this program. If not, see
 # <http://www.gnu.org/licenses/>.
 
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
-ruby '2.7.1'
+ruby "2.7.1"
 
-gem 'sinatra'
-gem 'xa-rules', git: 'https://github.com/Xalgorithms/lib-rules-parse-ruby.git'
+gem "sinatra"
+gem "sinatra-contrib"
+gem "xa-rules", git: "https://github.com/Xalgorithms/lib-rules-parse-ruby.git"
+gem "multi_json"
