@@ -20,7 +20,6 @@ body {
 button,
 textarea {
     border: 1px solid #3b3733;
-    border-radius: 4px;
     padding: 0.5em 1em;
     margin-right: 0.6em;
 }
@@ -77,8 +76,6 @@ pre {
 
     button,
     textarea {
-        border: 1px solid #3b3733;
-        border-radius: 4px;
         margin-right: 0.2em;
     }
 

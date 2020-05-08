@@ -7,7 +7,7 @@ EFFECTIVE
   FROM "2018-04-01T00:00"
   TO "9999-12-30T23:59"
   TIMEZONE "America/Toronto"
-  FOR "key0";
+  FOR "key-name";
   
 WHEN items:a == 1;
 
@@ -17,3 +17,11 @@ REQUIRE assemble:join:0.0.1 AS table_join;
 ASSEMBLE table0
   COLUMNS (a, c) FROM table_origin
   COLUMN p FROM table_join;
+
+ARRANGE table0 AS table_sort_a USING sort(a, "numeric");
+
+REFINE table_sort_a AS table_result
+  FILTER a <= 4
+  FILTER a > 1
+  MAP c = b
+  TAKE first(2);

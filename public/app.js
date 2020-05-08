@@ -74,6 +74,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   repl.onkeydown = function (e) {
     resize_repl();
+
+    if (e.key == "Tab") {
+      e.preventDefault();
+      repl.value += "  ";
+    }
   };
 
   repl.onpaste = function (e) {
