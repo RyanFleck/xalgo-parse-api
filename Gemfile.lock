@@ -13,7 +13,7 @@ GEM
     mustermann (1.1.1)
       ruby2_keywords (~> 0.0.1)
     parslet (2.0.0)
-    rack (2.2.2)
+    rack (2.2.6.3)
     rack-protection (2.0.8.1)
       rack
     ruby2_keywords (0.0.2)
@@ -33,6 +33,7 @@ GEM
 
 PLATFORMS
   x64-mingw32
+  x86_64-linux
 
 DEPENDENCIES
   multi_json
